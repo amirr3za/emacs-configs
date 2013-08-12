@@ -1,0 +1,7 @@
+# Emacs byte-compiled files
+*.elc
+
+elpa/
+vendor/
+themes/
+
