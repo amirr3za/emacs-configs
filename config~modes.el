@@ -91,7 +91,7 @@
 
 
 ;; Go-mode
-;(autoload 'go-mode "go-mode" nil t)
+(autoload 'go-mode "go-mode" nil t)
 
 
 ;; Markdown-mode
