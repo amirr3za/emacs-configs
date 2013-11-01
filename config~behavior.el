@@ -14,7 +14,10 @@
 
 ;; Font
 (set-frame-font "Source Code Pro Medium-12")
-
+(set-fontset-font
+   "fontset-default"
+   (cons (decode-char 'ucs #x0600) (decode-char 'ucs #x06ff)) ; arabic, persian
+   "DejaVu Sans Mono")
 
 ;; Theme
 (load-theme 'minimal-dark t)
