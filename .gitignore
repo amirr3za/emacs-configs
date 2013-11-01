@@ -2,3 +2,6 @@
 *.elc
 
 themes/minimal
+elpa/*
+!elpa/README.md
+
