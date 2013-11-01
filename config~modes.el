@@ -18,6 +18,7 @@
   '(go-mode               ;; Golang
     clojure-mode          ;; Clojure
     web-mode              ;; JavaScript, HTML, CSS, ...
+    jade-mode             ;; Jade-mode and stylus-mode 
     auto-complete         ;; Auto completions
     markdown-mode         ;; Markdown
     magit                 ;; Git
