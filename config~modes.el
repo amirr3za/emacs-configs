@@ -16,7 +16,7 @@
 ;; Define packages to be installed if missing
 (defvar my-packages
   '(go-mode               ;; Golang
-    clojure-mode          ;; Clojure
+    cider                 ;; Clojure
     web-mode              ;; JavaScript, HTML, CSS, ...
     jade-mode             ;; Jade-mode and stylus-mode 
     auto-complete         ;; Auto completions
