@@ -8,8 +8,25 @@
 (if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
 
 
-;; Enable mouse in termina
-(xterm-mouse-mode t)
+;; Enable mouse in terminal
+;(xterm-mouse-mode t)
+
+;; Enable mouse support
+(unless window-system
+  (require 'mouse)
+  (xterm-mouse-mode t)
+  (global-set-key [mouse-4] '(lambda ()
+                              (interactive)
+                              (scroll-down 1)))
+  (global-set-key [mouse-5] '(lambda ()
+                              (interactive)
+                              (scroll-up 1)))
+  (defun track-mouse (e))
+  (setq mouse-sel-mode t)
+)
+
+;; disable bell function
+(setq ring-bell-function 'ignore)
 
 
 ;; Font
