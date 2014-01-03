@@ -37,8 +37,8 @@
    "DejaVu Sans Mono")
 
 ;; Theme
-(load-theme 'minimal-dark t)
-;(load-theme 'minimal-light t)
+(load-theme 'solarized-dark t)
+;(load-theme 'solarized-light t)
 
 
 ;; No startup message

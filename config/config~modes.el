@@ -26,7 +26,8 @@
     ido-ubiquitous        ;; ido everywhere
     smex                  ;; replacement for M-x (based on ido)
     dash                  ;; A modern list library for Emacs (need by some modes)
-    s)                    ;; An Emacs string manipulation library (need by some modes))
+    s                     ;; An Emacs string manipulation library (need by some modes))
+    solarized-theme)      ;; Solarized theme     
   "A list of packages to ensure are installed at launch.")
 
 ;; Goes through the list and installs the missing packages
