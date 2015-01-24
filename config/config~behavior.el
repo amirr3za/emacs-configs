@@ -31,7 +31,7 @@
 
 
 ;; Font
-(when (member "DejaVu Sans Mono" (font-family-list))
+(when (member "Fira Mono" (font-family-list))
   (set-face-attribute 'default nil :font "Fira Mono-15"))
 
 ;(if (display-graphic-p)
