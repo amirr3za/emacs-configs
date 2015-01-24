@@ -17,8 +17,10 @@
 
 ;; More familiar key bindings for undo and redo
 (global-unset-key (kbd "C-z"))
+(global-unset-key (kbd "C-Z"))
 (global-unset-key (kbd "C-x C-z"))
 (global-set-key (kbd "C-z") 'undo)
+(global-set-key (kbd "C-S-z") 'redo)
 
 
 ;; When i hit TAB, just insert the TAB!

@@ -16,7 +16,7 @@
 ;; Define packages to be installed if missing
 (defvar my-packages
   '(go-mode               ;; Golang
-    cider                 ;; Clojure
+    ;cider                 ;; Clojure
     web-mode              ;; JavaScript, HTML, CSS, ...
     jade-mode             ;; Jade-mode and stylus-mode 
     auto-complete         ;; Auto completions
@@ -27,7 +27,8 @@
     smex                  ;; replacement for M-x (based on ido)
     dash                  ;; A modern list library for Emacs (need by some modes)
     s                     ;; An Emacs string manipulation library (need by some modes))
-    solarized-theme)      ;; Solarized theme     
+    solarized-theme       ;; Solarized theme
+    redo+)                ;; Redo
   "A list of packages to ensure are installed at launch.")
 
 ;; Goes through the list and installs the missing packages
@@ -46,6 +47,8 @@
 ;; Smex
 (smex-initialize) ;; key-binding for smex are defined in config~keybindings.el
 
+;;redo+
+(require 'redo+)
 
 ;; Autocomplete
 (require 'auto-complete-config)
@@ -63,6 +66,7 @@
 (setq whitespace-line-column 100) ;; limit line length
 (setq whitespace-style '(face lines-tail))
 (add-hook 'prog-mode-hook 'whitespace-mode)
+(custom-set-faces '(whitespace-line ((t (:background "gray20" :foreground nil :highlight nil)))))
 ;(global-whitespace-mode +1)
 
 

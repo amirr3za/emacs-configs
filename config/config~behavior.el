@@ -16,37 +16,45 @@
   (require 'mouse)
   (xterm-mouse-mode t)
   (global-set-key [mouse-4] '(lambda ()
-                              (interactive)
-                              (scroll-down 1)))
+                               (interactive)
+                               (scroll-down 1)))
   (global-set-key [mouse-5] '(lambda ()
-                              (interactive)
-                              (scroll-up 1)))
+                               (interactive)
+                               (scroll-up 1)))
   (defun track-mouse (e))
-  (setq mouse-sel-mode t)
-)
+  (setq mouse-sel-mode t))
+
 
 ;; disable bell function
 (setq ring-bell-function 'ignore)
 
 
+
 ;; Font
-(set-frame-font "Source Code Pro Medium-12")
-(set-fontset-font
-   "fontset-default"
-   (cons (decode-char 'ucs #x0600) (decode-char 'ucs #x06ff)) ; arabic, persian
-   "DejaVu Sans Mono")
+(when (member "DejaVu Sans Mono" (font-family-list))
+  (set-face-attribute 'default nil :font "Fira Mono-15"))
+
+;(if (display-graphic-p)
+;    ; Different font for arabic & persian.
+;    (set-fontset-font "fontset-default"
+;                      (cons (decode-char 'ucs #x0600)
+;                            (decode-char 'ucs #x06ff))
+;                      "DejaVu Sans Mono-14")
+;  (set-frame-font "Menlo Regular-13"))
+
+
 
 ;; Theme
-(load-theme 'solarized-dark t)
-;(load-theme 'solarized-light t)
-
+;(load-theme 'solarized-dark t)
+(load-theme 'minimal-dark t)
+;(load-theme 'monochrome t)
 
 ;; No startup message
 (setq inhibit-startup-message t)
 (setq initial-scratch-message nil)
 
 
-;; Disable spell chekcer
+;; Disable spell check
 (defconst *spell-check-support-enabled* nil)
 
 
@@ -63,6 +71,8 @@
 ;; display line numbers. Highlight current line. Emacs 23> only.
 (global-linum-mode   t)
 (global-hl-line-mode 1)
+;(set-face-background 'hl-line "#080808")
+(set-face-foreground 'highlight nil)
 
 
 ;; better format for line number margin
