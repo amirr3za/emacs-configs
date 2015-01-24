@@ -1,7 +1,13 @@
 # Emacs byte-compiled files
+.DS*
 *.elc
+*.dat
 
-themes/minimal
+themes/*
+!themes/minimal
+
 elpa/*
 !elpa/README.md
+
+auto-save-list/*
 
