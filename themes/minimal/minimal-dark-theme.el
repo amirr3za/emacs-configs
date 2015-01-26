@@ -46,7 +46,7 @@
    ;; Highlighting faces
    `(fringe    ((t (:background ,black016))))   
    `(highlight ((t (:background ,black016))))
-   `(region    ((t (:background ,gray234))))
+   `(region    ((t (:background ,black016))))
    
    ;; Font lock faces
    `(font-lock-string-face        ((t (:foreground ,blue066))))
