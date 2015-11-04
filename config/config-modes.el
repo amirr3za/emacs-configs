@@ -16,7 +16,7 @@
     ;cider                 ;; Clojure
     web-mode              ;; JavaScript, HTML, CSS, ...
     jade-mode             ;; Jade-mode and stylus-mode
-    company-mode          ;; Auto completions
+    company          ;; Auto completions
     ;auto-complete         ;; Auto completions
     markdown-mode         ;; Markdown
     magit                 ;; Git
@@ -62,16 +62,18 @@
 ;; redo+
 (require 'redo+)
 
+;; Company-mode
+(add-hook 'after-init-hook 'global-company-mode)
 
 ;; Autocomplete
-(require 'auto-complete-config)
-(add-to-list 'ac-modes 'go-mode)
-(add-to-list 'ac-modes 'clojure-mode)
-(add-to-list 'ac-modes 'web-mode)
-(add-to-list 'ac-modes 'python-mode)
-(add-to-list 'ac-modes 'text-mode)
+;(require 'auto-complete-config)
+;(add-to-list 'ac-modes 'go-mode)
+;(add-to-list 'ac-modes 'clojure-mode)
+;(add-to-list 'ac-modes 'web-mode)
+;(add-to-list 'ac-modes 'python-mode)
+;(add-to-list 'ac-modes 'text-mode)
 ;(add-to-list 'ac-dictionary-directories "~/.emacs.d/plugins/auto-complete/ac-dict")
-(ac-config-default)
+;(ac-config-default)
 
 
 ;; Right margin
@@ -111,6 +113,9 @@
 
 ;; Go-mode
 (autoload 'go-mode "go-mode" nil t)
+
+;; Elixir - alchemist
+(autoload 'alchemist "alchemist" nil t)
 
 ;; Rust-mode
 (autoload 'rust-mode "rust-mode" nil t)
