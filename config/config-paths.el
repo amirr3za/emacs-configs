@@ -9,5 +9,4 @@
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/minimal")
 
 ;;------------------------------------------------------------------------------
-(provide 'config~paths)
-
+(provide 'config-paths)

@@ -35,11 +35,16 @@
 (global-set-key (kbd "<f8> c") 'comment-or-uncomment-region)
 
 
+;; Use M-x with helm
+;(global-set-key (kbd "M-x") 'helm-M-x)
+
+
 ;; Replace M-x with Smex
-(global-set-key (kbd "M-x") 'smex)
-(global-set-key (kbd "M-X") 'smex-major-mode-commands)
+;(global-set-key (kbd "M-x") 'smex)
+;(global-set-key (kbd "M-X") 'smex-major-mode-commands)
+
 ;; This is your old M-x.
-(global-set-key (kbd "C-c C-c M-x") 'execute-extended-command)
+;(global-set-key (kbd "C-c C-c M-x") 'execute-extended-command)
 
 
 ;; Inserts date in ISO 8601 format -->
@@ -52,5 +57,4 @@
 
 
 ;;------------------------------------------------------------------------------
-(provide 'config~keybindings)
-
+(provide 'config-keybindings)

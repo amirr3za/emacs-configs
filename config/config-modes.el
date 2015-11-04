@@ -1,54 +1,67 @@
-;; Start the emacs server, only if its not running already.
-(require 'server)
-(unless (server-running-p) (server-start))
-
-
-;; Package manager
+;; Configure Package manager.
 (require 'package)
-(setq package-user-dir "~/.emacs.d/elpa/")
+(setq package-user-dir "~/.emacs.d/packages/")
 ;(add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
-(add-to-list 'package-archives '("melpa"     . "http://melpa.milkbox.net/packages/") t)
+(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
 (package-initialize)
 
 (when (not package-archive-contents)
   (package-refresh-contents))
-  
-;; Define packages to be installed if missing
+
+;; List of packages to be installed.
 (defvar my-packages
   '(go-mode               ;; Golang
+    alchemist             ;; Elixir
+    rust-mode             ;; Rust
     ;cider                 ;; Clojure
     web-mode              ;; JavaScript, HTML, CSS, ...
-    jade-mode             ;; Jade-mode and stylus-mode 
-    auto-complete         ;; Auto completions
+    jade-mode             ;; Jade-mode and stylus-mode
+    company-mode          ;; Auto completions
+    ;auto-complete         ;; Auto completions
     markdown-mode         ;; Markdown
     magit                 ;; Git
+    helm
     smartparens           ;; combination of autopair, textmate, wrap-region, paredit
-    ido-ubiquitous        ;; ido everywhere
-    smex                  ;; replacement for M-x (based on ido)
-    dash                  ;; A modern list library for Emacs (need by some modes)
-    s                     ;; An Emacs string manipulation library (need by some modes))
+    ;ido-ubiquitous        ;; ido everywhere
+    ;smex                  ;; replacement for M-x (based on ido)
+    ;dash                  ;; A modern list library for Emacs (need by some modes)
+    ;s                     ;; An Emacs string manipulation library (need by some modes))
     solarized-theme       ;; Solarized theme
     redo+)                ;; Redo
   "A list of packages to ensure are installed at launch.")
 
-;; Goes through the list and installs the missing packages
+;; Read the list and install the missing packages.
 (dolist (p my-packages)
   (when (not (package-installed-p p))
     (package-install p)))
 
 
+;; Start the emacs server, only if its not running already.
+(require 'server)
+(unless (server-running-p) (server-start))
+
+
+;; helm
+(require 'helm-config)
+(helm-mode 1)
+(setq helm-mode-fuzzy-match t)
+(setq helm-completion-in-region-fuzzy-match t)
+
+
 ;; ido
-(require 'ido)
-(ido-mode 1)
-(setq ido-everywhere t)
-(setq ido-enable-flex-matching t)
+;(require 'ido)
+;(ido-mode 1)
+;(setq ido-everywhere t)
+;(setq ido-enable-flex-matching t)
 
 
 ;; Smex
-(smex-initialize) ;; key-binding for smex are defined in config~keybindings.el
+;(smex-initialize) ;; key-binding for smex are defined in config~keybindings.el
 
-;;redo+
+
+;; redo+
 (require 'redo+)
+
 
 ;; Autocomplete
 (require 'auto-complete-config)
@@ -81,7 +94,7 @@
 
 
 ;;------------------------------------------------------------------------------
-;; Autoloads 
+;; Autoloads
 ;;------------------------------------------------------------------------------
 
 ;; C family
@@ -90,8 +103,8 @@
             (c-set-style "K&R")
             (setq tab-width 4)
             (setq c-basic-offset 4)))
-            
-            
+
+
 ;; Magit
 (autoload 'magit-status "magit" nil t)
 
@@ -99,6 +112,8 @@
 ;; Go-mode
 (autoload 'go-mode "go-mode" nil t)
 
+;; Rust-mode
+(autoload 'rust-mode "rust-mode" nil t)
 
 ;; Markdown-mode
 (autoload 'markdown-mode "markdown-mode" nil t)
@@ -122,5 +137,4 @@
 
 
 ;;------------------------------------------------------------------------------
-(provide 'config~modes)
-
+(provide 'config-modes)
