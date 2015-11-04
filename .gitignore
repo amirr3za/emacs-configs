@@ -2,12 +2,12 @@
 .DS*
 *.elc
 *.dat
+smex-items
 
 themes/*
 !themes/minimal
 
-elpa/*
-!elpa/README.md
+packages/*
+!packages/README.md
 
 auto-save-list/*
-
