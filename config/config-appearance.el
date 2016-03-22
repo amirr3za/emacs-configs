@@ -27,8 +27,8 @@
 
 ;; Set font, when running in gui and if font exist on system.
 (when (display-graphic-p)
-  (when (member "Fira Mono" (font-family-list))
-    (set-face-attribute 'default nil :font "Fira Mono-15")))
+  (when (member "Input" (font-family-list))
+    (set-face-attribute 'default nil :font "Input-15")))
 
 
 ;(when (and (display-graphic-p)

@@ -15,12 +15,14 @@
 (global-set-key (kbd "<S-down>")  'windmove-down)
 
 
-;; More familiar key bindings for undo and redo
+;; Undo / Redo More familiar key bindings. [undo-tree]
 (global-unset-key (kbd "C-z"))
-(global-unset-key (kbd "C-Z"))
+(global-unset-key (kbd "C-S-z"))
 (global-unset-key (kbd "C-x C-z"))
-(global-set-key (kbd "C-z") 'undo)
-(global-set-key (kbd "C-S-z") 'redo)
+
+(defalias 'redo 'undo-tree-redo)
+(global-set-key (kbd "C-z")    'undo)
+(global-set-key (kbd "C-S-z")  'redo)
 
 
 ;; When i hit TAB, just insert the TAB!
@@ -35,16 +37,13 @@
 (global-set-key (kbd "<f8> c") 'comment-or-uncomment-region)
 
 
-;; Use M-x with helm
-;(global-set-key (kbd "M-x") 'helm-M-x)
-
-
-;; Replace M-x with Smex
-;(global-set-key (kbd "M-x") 'smex)
-;(global-set-key (kbd "M-X") 'smex-major-mode-commands)
-
-;; This is your old M-x.
-;(global-set-key (kbd "C-c C-c M-x") 'execute-extended-command)
+;; helm
+(global-set-key (kbd "M-x")       'undefined)
+(global-set-key (kbd "M-x")       'helm-M-x)
+(global-set-key (kbd "M-y")       'helm-show-kill-ring)
+(global-set-key (kbd "C-c f")     'helm-recentf)
+(global-set-key (kbd "C-x C-f")   'helm-find-files)
+(define-key global-map [remap list-buffers]   'helm-buffers-list)
 
 
 ;; Inserts date in ISO 8601 format -->

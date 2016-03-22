@@ -11,23 +11,20 @@
 ;; List of packages to be installed.
 (defvar my-packages
   '(go-mode               ;; Golang
+    erlang                ;; Erlang
     alchemist             ;; Elixir
     rust-mode             ;; Rust
-    ;cider                 ;; Clojure
     web-mode              ;; JavaScript, HTML, CSS, ...
     jade-mode             ;; Jade-mode and stylus-mode
-    company          ;; Auto completions
-    ;auto-complete         ;; Auto completions
     markdown-mode         ;; Markdown
+
+    company               ;; Auto completions
     magit                 ;; Git
-    helm
+    helm                  ;; Incremental completion and selection narrowing framework
     smartparens           ;; combination of autopair, textmate, wrap-region, paredit
-    ;ido-ubiquitous        ;; ido everywhere
-    ;smex                  ;; replacement for M-x (based on ido)
-    ;dash                  ;; A modern list library for Emacs (need by some modes)
-    ;s                     ;; An Emacs string manipulation library (need by some modes))
     solarized-theme       ;; Solarized theme
-    redo+)                ;; Redo
+    undo-tree             ;; Better undo/redo
+    guide-key)            ;; Guide the following key bindings automatically
   "A list of packages to ensure are installed at launch.")
 
 ;; Read the list and install the missing packages.
@@ -44,36 +41,31 @@
 ;; helm
 (require 'helm-config)
 (helm-mode 1)
-(setq helm-mode-fuzzy-match t)
-(setq helm-completion-in-region-fuzzy-match t)
+(setq helm-mode-fuzzy-match                     t
+      helm-M-x-fuzzy-match                      t
+      helm-lisp-fuzzy-completion                t
+      helm-buffers-fuzzy-matching               t
+      helm-completion-in-region-fuzzy-match     t
+      helm-boring-file-regexp-list              '("\\.git$" "\\.hg$" "\\.svn$" "\\.CVS$" "\\._darcs$" "\\.la$" "\\.o$" "\\.i$")
+      helm-move-to-line-cycle-in-source         t)
+(helm-autoresize-mode 1)
 
 
-;; ido
-;(require 'ido)
-;(ido-mode 1)
-;(setq ido-everywhere t)
-;(setq ido-enable-flex-matching t)
+;; undo-tree
+(global-undo-tree-mode 1)
 
-
-;; Smex
-;(smex-initialize) ;; key-binding for smex are defined in config~keybindings.el
-
-
-;; redo+
-(require 'redo+)
 
 ;; Company-mode
 (add-hook 'after-init-hook 'global-company-mode)
+(setq company-idle-delay              0.3
+      company-minimum-prefix-length   2
+      company-show-numbers            t)
 
-;; Autocomplete
-;(require 'auto-complete-config)
-;(add-to-list 'ac-modes 'go-mode)
-;(add-to-list 'ac-modes 'clojure-mode)
-;(add-to-list 'ac-modes 'web-mode)
-;(add-to-list 'ac-modes 'python-mode)
-;(add-to-list 'ac-modes 'text-mode)
-;(add-to-list 'ac-dictionary-directories "~/.emacs.d/plugins/auto-complete/ac-dict")
-;(ac-config-default)
+
+;; guide-key
+;(setq guide-key/idle-delay 0.1)
+;(setq guide-key/guide-key-sequence '("C-x"))
+;(guide-key-mode 1)
 
 
 ;; Right margin
@@ -91,13 +83,9 @@
 
 
 ;; open unknown files in text mode
-(setq major-mode         'text-mode)
-(setq initial-major-mode 'text-mode)
+(setq major-mode         'text-mode
+      initial-major-mode 'text-mode)
 
-
-;;------------------------------------------------------------------------------
-;; Autoloads
-;;------------------------------------------------------------------------------
 
 ;; C family
 (add-hook 'c-mode-hook
@@ -108,37 +96,43 @@
 
 
 ;; Magit
-(autoload 'magit-status "magit" nil t)
+(autoload 'magit-status "magit" t nil)
 
 
 ;; Go-mode
-(autoload 'go-mode "go-mode" nil t)
+;(autoload 'go-mode "go-mode" t nil)
+
+
+;; Erlang
+(require 'erlang-start)
 
 ;; Elixir - alchemist
-(autoload 'alchemist "alchemist" nil t)
+(require 'alchemist)
+;(autoload 'alchemist-mode "alchemist" t nil)
+;(add-to-list 'auto-mode-alist '("\\.exs" . alchemist-mode))
 
 ;; Rust-mode
-(autoload 'rust-mode "rust-mode" nil t)
+;(autoload 'rust-mode "rust-mode" t nil)
 
 ;; Markdown-mode
-(autoload 'markdown-mode "markdown-mode" nil t)
+(autoload 'markdown-mode "markdown-mode" t nil)
 (add-to-list 'auto-mode-alist '("\\.md" . markdown-mode))
 
 
 ;; web-mode
-;(autoload 'web-mode "web-mode" nil t)
+;(autoload 'web-mode "web-mode" t nil)
 (add-hook 'web-mode-hook (lambda () (whitespace-mode -1)))  ;;No whitespace-mode in web-mode
 (add-to-list 'auto-mode-alist '("\\.html$" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.css$"  . web-mode))
 (add-to-list 'auto-mode-alist '("\\.js$"   . web-mode))
 (add-to-list 'auto-mode-alist '("\\.tpl$"  . web-mode))
 
-(setq web-mode-markup-indent-offset   2)
-(setq web-mode-css-indent-offset      2)
-(setq web-mode-code-indent-offset     2)
-(setq web-mode-indent-style           2)
-(setq web-mode-tag-auto-close-style   2)
-(setq web-mode-disable-autocompletion t)
+(setq web-mode-markup-indent-offset    2
+      web-mode-css-indent-offset       2
+      web-mode-code-indent-offset      2
+      web-mode-indent-style            2
+      web-mode-tag-auto-close-style    2
+      web-mode-disable-autocompletion  t)
 
 
 ;;------------------------------------------------------------------------------

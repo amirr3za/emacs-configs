@@ -81,12 +81,15 @@
    `(web-mode-keyword-face           ((t (:foreground ,gray251))))
    `(web-mode-builtin-face           ((t (:foreground ,gray251))))
 
+   ;; Elixir
+   `(elixir-atom-face        ((t (:foreground ,gray251))))
+
    )
 
   ;; Set variables
   (custom-theme-set-variables
    'minimal-dark
-   ;'(other variables)
+   ;`(other variables)
    )
 )
 
