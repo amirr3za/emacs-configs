@@ -24,7 +24,8 @@
     smartparens           ;; combination of autopair, textmate, wrap-region, paredit
     solarized-theme       ;; Solarized theme
     undo-tree             ;; Better undo/redo
-    guide-key)            ;; Guide the following key bindings automatically
+    guide-key             ;; Guide the following key bindings automatically
+    neotree)              ;; Side bar file explorer
   "A list of packages to ensure are installed at launch.")
 
 ;; Read the list and install the missing packages.
@@ -97,6 +98,10 @@
 
 ;; Magit
 (autoload 'magit-status "magit" t nil)
+
+;; neotree
+(require 'neotree)
+(setq neo-smart-open t)
 
 
 ;; Go-mode

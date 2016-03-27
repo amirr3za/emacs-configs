@@ -25,6 +25,10 @@
 (global-set-key (kbd "C-S-z")  'redo)
 
 
+;; neotree
+(global-set-key (kbd "C-x <f8>") 'neotree-toggle)
+
+
 ;; When i hit TAB, just insert the TAB!
 ;(global-set-key (kbd "TAB") 'self-insert-command);
 
